@@ -1,4 +1,4 @@
-package com.amigo.customer;
+package com.amigo.fraud;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
@@ -9,8 +9,8 @@ import org.springframework.cloud.openfeign.FeignAutoConfiguration;
 @SpringBootApplication
 @EnableFeignClients
 @ImportAutoConfiguration({FeignAutoConfiguration.class})
-public class CustomerApp {
+public class FraudApp {
     public static void main(String[] args) {
-        SpringApplication.run(CustomerApp.class, args);
+        SpringApplication.run(FraudApp.class, args);
     }
 }

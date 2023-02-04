@@ -1,4 +1,4 @@
-package com.amigo.customer.dao;
+package com.amigo.fraud.dao;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -7,24 +7,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.time.LocalDateTime;
+
 @Data
 @Builder
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @FieldDefaults(makeFinal = false)
-public class Customer {
+public class FraudCheckHistory {
     @Id
     @SequenceGenerator(
-            name = "customer_id_sequence",
-            sequenceName = "customer_id_sequence"
+            name = "fraud_id_sequence",
+            sequenceName = "fraud_id_sequence"
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "customer_id_sequence"
+            generator = "fraud_id_sequence"
     )
     Integer id;
-    String firstName;
-    String lastName;
-    String email;
+    Integer customerId;
+    Boolean isFraudster;
+    LocalDateTime createdAt;
 }

@@ -1,4 +1,4 @@
-package com.amigo.customer.controller;
+package com.amigo.customer.dto;
 
 public record CustomerRequest(
         String firstName,
