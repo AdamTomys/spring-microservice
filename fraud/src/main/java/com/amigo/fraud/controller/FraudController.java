@@ -1,6 +1,6 @@
 package com.amigo.fraud.controller;
 
-import com.amigo.fraud.dto.FraudCheckResponse;
+import com.amigo.clients.fraud.FraudResponse;
 import com.amigo.fraud.service.FraudCheckService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -18,9 +18,9 @@ public class FraudController {
     FraudCheckService fraudCheckService;
 
     @GetMapping("check/{customerId}")
-    public FraudCheckResponse isFraudster(@PathVariable("customerId") Integer customerId) {
+    public FraudResponse isFraudster(@PathVariable("customerId") Integer customerId) {
         log.info("Fraud check for customer id {}", customerId);
         boolean isFraudulentCustomer = fraudCheckService.isFraudulentCustomer(customerId);
-        return new FraudCheckResponse(isFraudulentCustomer);
+        return new FraudResponse(isFraudulentCustomer);
     }
 }
