@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8082
 
 spring:
   application:
-    name: fraud
+    name: notifications
   datasource:
     password: password
-    url: jdbc:postgresql://0.0.0.0:5432/fraud
+    url: jdbc:postgresql://0.0.0.0:5432/notifications
     username: amigoscode
   jpa:
     hibernate:
