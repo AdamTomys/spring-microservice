@@ -14,3 +14,7 @@ eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
+
+logging:
+  level:
+    root: info
