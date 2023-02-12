@@ -10,7 +10,6 @@ import lombok.experimental.FieldDefaults;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(makeFinal = false)
 public class NotificationResponse {
     Boolean isSent;
 }

@@ -1,13 +1,14 @@
 package com.amigo.clients.fraud;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@FieldDefaults(makeFinal = false)
 public class FraudResponse {
     Boolean isFraudster;
 }

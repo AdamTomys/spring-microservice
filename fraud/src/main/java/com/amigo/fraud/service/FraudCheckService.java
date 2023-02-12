@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Service
 public class FraudCheckService {
 
-    FraudCheckRepository fraudCheckRepository;
+    final FraudCheckRepository fraudCheckRepository;
 
     @Autowired
     public FraudCheckService(FraudCheckRepository fraudCheckRepository) {

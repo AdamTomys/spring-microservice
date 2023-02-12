@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@FieldDefaults(makeFinal = false)
 public class Notification {
 
     @Id

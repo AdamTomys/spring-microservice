@@ -14,7 +14,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@FieldDefaults(makeFinal = false)
 public class FraudCheckHistory {
     @Id
     @SequenceGenerator(

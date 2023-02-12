@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class NotificationService {
 
-    NotificationRepository notificationRepository;
+    final NotificationRepository notificationRepository;
 
     public NotificationResponse sendNotification(NotificationRequest request) {
         createNotificationLogInDb(request);

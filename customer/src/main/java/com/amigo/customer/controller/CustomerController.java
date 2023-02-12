@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CustomerController {
 
-    CustomerService customerService;
+    final CustomerService customerService;
 
     @PostMapping("register")
     public void registerCustomer(@RequestBody CustomerRequest request) {

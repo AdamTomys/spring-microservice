@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @Log4j2
 public class FraudController {
 
-    FraudCheckService fraudCheckService;
+    final FraudCheckService fraudCheckService;
 
     @GetMapping("check/{customerId}")
     public FraudResponse isFraudster(@PathVariable("customerId") Integer customerId) {
