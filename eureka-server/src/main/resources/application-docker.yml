@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: eureka-server
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+  zipkin:
+    base-url: http://zipkin:9411
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+    prefer-ip-address: true
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+
+logging:
+  level:
+    root: info
