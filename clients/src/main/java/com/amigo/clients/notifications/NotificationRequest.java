@@ -11,4 +11,8 @@ public class NotificationRequest {
     Integer customerId;
     String customerEmail;
     String message;
+
+    public NotificationRequest(String message) {
+        this.message = message;
+    }
 }
