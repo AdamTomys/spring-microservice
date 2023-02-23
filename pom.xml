@@ -12,12 +12,13 @@
   <name>amigo</name>
   <modules>
     <module>customer</module>
-      <module>fraud</module>
+    <module>fraud</module>
     <module>eureka-server</module>
     <module>clients</module>
     <module>notifications</module>
     <module>apigw</module>
     <module>amqp</module>
+    <module>reports</module>
   </modules>
   <!--  <url>http://www.example.com</url>-->
 

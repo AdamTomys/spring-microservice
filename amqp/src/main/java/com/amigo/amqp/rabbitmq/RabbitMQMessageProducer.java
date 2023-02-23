@@ -1,4 +1,4 @@
-package com.amigo.amqp;
+package com.amigo.amqp.rabbitmq;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;

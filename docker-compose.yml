@@ -75,52 +75,52 @@ services:
 
 #  -------no need with k8s--------
 
-  customer:
-    image: adamtomys/customer:latest
-    container_name: customer
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-#      - eureka-server - no need with k8s
-      - rabbitmq
-      - postgres
-
-  fraud:
-    image: adamtomys/fraud:latest
-    container_name: fraud
-    ports:
-      - "8081:8081"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-#      - eureka-server - no need with k8s
-      - postgres
-
-  notifications:
-    image: adamtomys/notifications:latest
-    container_name: notifications
-    ports:
-      - "8082:8082"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-      - postgres
-    depends_on:
-      - zipkin
-#      - eureka-server - no need with k8s
-      - rabbitmq
-      - postgres
+#  customer:
+#    image: adamtomys/customer:latest
+#    container_name: customer
+#    ports:
+#      - "8080:8080"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+##      - eureka-server - no need with k8s
+#      - rabbitmq
+#      - postgres
+#
+#  fraud:
+#    image: adamtomys/fraud:latest
+#    container_name: fraud
+#    ports:
+#      - "8081:8081"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+##      - eureka-server - no need with k8s
+#      - postgres
+#
+#  notifications:
+#    image: adamtomys/notifications:latest
+#    container_name: notifications
+#    ports:
+#      - "8082:8082"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#      - postgres
+#    depends_on:
+#      - zipkin
+##      - eureka-server - no need with k8s
+#      - rabbitmq
+#      - postgres
 
 #  loki:
 #    image: grafana/loki:2.2.1

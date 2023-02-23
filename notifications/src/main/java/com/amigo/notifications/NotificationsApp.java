@@ -1,6 +1,6 @@
 package com.amigo.notifications;
 
-import com.amigo.amqp.RabbitMQMessageProducer;
+import com.amigo.amqp.rabbitmq.RabbitMQMessageProducer;
 import com.amigo.notifications.ampq.NotificationConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
