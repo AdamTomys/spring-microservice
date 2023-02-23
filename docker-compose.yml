@@ -46,6 +46,10 @@ services:
     networks:
       - spring
 
+#  kafka locally, execute below commands in kafka directory:
+#  bin/zookeeper-server-start.sh config/zookeeper.properties
+#  bin/kafka-server-start.sh config/server.properties
+
 #  -------no need with k8s--------
 
 #  eureka-server:
