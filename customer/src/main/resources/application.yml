@@ -21,7 +21,7 @@ spring:
   rabbitmq:
     addresses: localhost:5672
   kafka:
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: http://localhost:9092
 
 eureka:
   instance:
@@ -33,7 +33,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     #    no need with k8s
-    enabled: false
+    enabled: true
 
 rabbitmq:
   exchanges:

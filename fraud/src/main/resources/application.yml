@@ -29,4 +29,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
 #    no need with k8s
-    enabled: false
+    enabled: true

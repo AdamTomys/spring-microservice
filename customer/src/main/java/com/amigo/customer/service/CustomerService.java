@@ -45,6 +45,7 @@ public class CustomerService {
     }
 
     private void sendCustomerReportToKafka(Customer customer) {
+        log.info("Publishing message to kafka MQ");
         kafkaTemplate.send(
                 "reports",
                 KafkaCustomerRequest.builder()

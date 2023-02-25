@@ -46,11 +46,90 @@ services:
     networks:
       - spring
 
-#  kafka locally, execute below commands in kafka directory:
-#  bin/zookeeper-server-start.sh config/zookeeper.properties
-#  bin/kafka-server-start.sh config/server.properties
+  zookeeper:
+    image: docker.io/bitnami/zookeeper:latest
+    container_name: zookeeper
+    ports:
+      - "2181:2181"
+    volumes:
+      - "zookeeper_data:/bitnami"
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - spring
 
-#  -------no need with k8s--------
+  kafka:
+    image: docker.io/bitnami/kafka:latest
+    container_name: kafka
+    ports:
+      - "9092:9092"
+    volumes:
+      - "kafka_data:/bitnami"
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    networks:
+      - spring
+
+  customer:
+    image: adamtomys/customer:latest
+    container_name: customer
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - rabbitmq
+      - postgres
+
+  reports:
+    image: adamtomys/reports:latest
+    container_name: reports
+    ports:
+      - "8085:8085"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+
+  fraud:
+    image: adamtomys/fraud:latest
+    container_name: fraud
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - postgres
+
+  notifications:
+    image: adamtomys/notifications:latest
+    container_name: notifications
+    ports:
+      - "8082:8082"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    networks:
+      - spring
+      - postgres
+    depends_on:
+      - zipkin
+      - rabbitmq
+      - postgres
 
 #  eureka-server:
 #    image: adamtomys/eureka-server:latest
@@ -63,7 +142,7 @@ services:
 #      - spring
 #    depends_on:
 #      - zipkin
-
+#
 #  apigw:
 #    image: adamtomys/apigw:latest
 #    container_name: apigw
@@ -77,54 +156,9 @@ services:
 #      - zipkin
 #      - eureka-server
 
-#  -------no need with k8s--------
-
-#  customer:
-#    image: adamtomys/customer:latest
-#    container_name: customer
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-##      - eureka-server - no need with k8s
-#      - rabbitmq
-#      - postgres
-#
-#  fraud:
-#    image: adamtomys/fraud:latest
-#    container_name: fraud
-#    ports:
-#      - "8081:8081"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-##      - eureka-server - no need with k8s
-#      - postgres
-#
-#  notifications:
-#    image: adamtomys/notifications:latest
-#    container_name: notifications
-#    ports:
-#      - "8082:8082"
-#    environment:
-#      - SPRING_PROFILES_ACTIVE=docker
-#    networks:
-#      - spring
-#      - postgres
-#    depends_on:
-#      - zipkin
-##      - eureka-server - no need with k8s
-#      - rabbitmq
-#      - postgres
+#  kafka locally, execute below commands in kafka directory:
+#  bin/zookeeper-server-start.sh config/zookeeper.properties
+#  bin/kafka-server-start.sh config/server.properties
 
 #  loki:
 #    image: grafana/loki:2.2.1
@@ -164,5 +198,9 @@ networks:
     driver: bridge
 
 volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
   postgres:
   pgadmin:

@@ -20,6 +20,8 @@ spring:
     base-url: http://localhost:9411
   rabbitmq:
     addresses: localhost:5672
+  profiles:
+    active: default
 
 eureka:
   instance:
@@ -31,7 +33,7 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     #    no need with k8s
-    enabled: false
+    enabled: true
 
 rabbitmq:
   exchanges:
