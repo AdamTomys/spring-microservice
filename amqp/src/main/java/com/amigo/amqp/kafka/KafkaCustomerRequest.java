@@ -2,8 +2,6 @@ package com.amigo.amqp.kafka;
 
 import lombok.*;
 
-import java.time.LocalDateTime;
-
 @Getter
 @Setter
 @Builder
