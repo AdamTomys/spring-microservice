@@ -14,9 +14,9 @@ public class ApiKeyAuthFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
-        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
+//        throw new ResponseStatusException(HttpStatus.UNAUTHORIZED);
 
-//        return chain.filter(exchange);
+        return chain.filter(exchange);
     }
 
     @Override

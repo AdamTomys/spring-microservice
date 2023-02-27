@@ -58,6 +58,10 @@ services:
     networks:
       - spring
 
+  #  kafka locally, execute below commands in kafka directory:
+  #  bin/zookeeper-server-start.sh config/zookeeper.properties
+  #  bin/kafka-server-start.sh config/server.properties
+
   kafka:
     image: docker.io/bitnami/kafka:latest
     container_name: kafka
@@ -87,6 +91,7 @@ services:
       - zipkin
       - rabbitmq
       - postgres
+      - kafka
 
   reports:
     image: adamtomys/reports:latest
@@ -101,6 +106,7 @@ services:
     depends_on:
       - zipkin
       - postgres
+      - kafka
 
   fraud:
     image: adamtomys/fraud:latest
@@ -130,6 +136,7 @@ services:
       - zipkin
       - rabbitmq
       - postgres
+      - kafka
 
 #  eureka-server:
 #    image: adamtomys/eureka-server:latest
@@ -155,10 +162,6 @@ services:
 #    depends_on:
 #      - zipkin
 #      - eureka-server
-
-#  kafka locally, execute below commands in kafka directory:
-#  bin/zookeeper-server-start.sh config/zookeeper.properties
-#  bin/kafka-server-start.sh config/server.properties
 
 #  loki:
 #    image: grafana/loki:2.2.1
